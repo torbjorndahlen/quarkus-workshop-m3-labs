@@ -5,6 +5,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import java.util.List;
+import javax.ws.rs.GET;
+import org.acme.model.Vet;
+
 import org.acme.service.VetsService;
 import org.jboss.logging.Logger;
 
@@ -21,6 +25,10 @@ public class VetsResource {
     @Inject
     VetsService service;
 
-    // TODO: Add the List method to retrieve the vets
+    @GET
+    public List<Vet> get() {
+        LOG.debug("Inside get() method");
+        return service.getAll();
+    }
 
 }

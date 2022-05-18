@@ -9,7 +9,9 @@ oc new-app -e POSTGRESQL_USER=customers \
   -e POSTGRESQL_DATABASE=customers openshift/postgresql:10-el8 \
   --name=customers-database
 
-mvn clean package -DskipTests -f $CHE_PROJECTS_ROOT/quarkus-workshop-m3-labs/quarkus-petclinic-customers-service
+#mvn clean package -DskipTests -f $CHE_PROJECTS_ROOT/quarkus-workshop-m3-labs/quarkus-petclinic-customers-service
+mvn clean package -Pnative -DskipTests -f $CHE_PROJECTS_ROOT/quarkus-workshop-m3-labs/quarkus-petclinic-customers-service
+
 
 oc label deployment/customers-database app.openshift.io/runtime=postgresql --overwrite && \
 oc label deployment/customers-database app.kubernetes.io/part-of=customers-app --overwrite

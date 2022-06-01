@@ -20,7 +20,6 @@ public class VetsResource {
     @Inject
     Template vets;
 
-    // TODO: Inject RestClient Bean
 
     @GET
     @Produces(MediaType.TEXT_HTML)
@@ -29,3 +28,4 @@ public class VetsResource {
                 .data("vets", service.getAll()); 
     }
 }
+
